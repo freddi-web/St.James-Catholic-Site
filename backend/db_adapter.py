@@ -53,6 +53,7 @@ def get_connection():
             row_factory=dict_row,
             connect_timeout=10,
             sslmode="require",
+            prepare_threshold=None,
         )
         wrapped = DatabaseConnection(connection, postgres=True)
     else:
