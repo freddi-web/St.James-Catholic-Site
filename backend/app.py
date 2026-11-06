@@ -7,7 +7,7 @@ from pathlib import Path
 from flask import Flask, jsonify, request, send_from_directory, session
 from werkzeug.security import check_password_hash, generate_password_hash
 
-from database import get_connection, initialize_database
+from db_adapter import get_connection, initialize_database
 
 
 ROOT = Path(__file__).resolve().parent.parent
