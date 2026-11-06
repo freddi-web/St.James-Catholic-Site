@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f9f8f3">
+    <title>Parish Admin | St. James Catholic Church</title>
+    <link rel="stylesheet" href="../css/admin.css">
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="adminSidebar">
+            <a class="admin-brand" href="../index.html">
+                <span class="admin-cross">✝</span>
+                <span><strong>St. James</strong><small>Parish portal</small></span>
+            </a>
+            <nav class="admin-nav" aria-label="Dashboard sections">
+                <a class="admin-nav-link active" href="#overview" data-section="overview">◈ Overview</a>
+                <a class="admin-nav-link" href="#schedules" data-section="schedules">◷ Service times</a>
+                <a class="admin-nav-link" href="#projects" data-section="projects">◇ Projects</a>
+                <a class="admin-nav-link" href="#jumuiyas" data-section="jumuiyas">◎ Jumuiyas</a>
+                <a class="admin-nav-link" href="#ministries" data-section="ministries">✣ Ministries</a>
+                <a class="admin-nav-link" href="#events" data-section="events">▦ Events</a>
+                <a class="admin-nav-link" href="#requests" data-section="requests">☷ Requests</a>
+                <a class="admin-nav-link" href="#giving" data-section="giving">♡ Giving</a>
+                <a class="admin-nav-link" href="#members" data-section="members" data-super-only>♙ Members & access</a>
+                <a class="admin-nav-link" href="#settings" data-section="settings">⚙ Parish settings</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <a class="website-link" href="../index.html">↗ View website</a>
+                <button class="logout-link" id="logoutButton">⇥ Sign out</button>
+            </div>
+        </aside>
+        <main class="admin-main">
+            <header class="admin-header">
+                <button class="sidebar-toggle" id="sidebarToggle" aria-label="Toggle menu">☰</button>
+                <div>
+                    <p class="admin-kicker">ST. JAMES CATHOLIC CHURCH</p>
+                    <h1 id="pageTitle">Parish overview</h1>
+                </div>
+                <div class="admin-user">
+                    <span class="user-avatar" id="userAvatar">S</span>
+                    <span><strong id="userName">Loading account…</strong><small id="userRole"></small></span>
+                </div>
+            </header>
+            <div class="dashboard-content">
+                <p class="admin-alert" id="adminAlert" role="status" hidden></p>
+
+                <section class="admin-panel active" id="panel-overview">
+                    <div class="welcome-banner">
+                        <div><p class="eyebrow">WELCOME TO YOUR PARISH PORTAL</p><h2>Faith, prayer, worship & service.</h2><p>Keep parish life up to date from one place.</p></div>
+                        <span class="welcome-cross" aria-hidden="true">✝</span>
+                    </div>
+                    <div class="dashboard-cards">
+                        <article class="dashboard-card"><span class="card-icon">◷</span><span>Service times<strong id="countSchedules">—</strong></span></article>
+                        <article class="dashboard-card"><span class="card-icon">◇</span><span>Active projects<strong id="countProjects">—</strong></span></article>
+                        <article class="dashboard-card"><span class="card-icon">◎</span><span>Jumuiyas<strong id="countJumuiyas">—</strong></span></article>
+                        <article class="dashboard-card"><span class="card-icon">☷</span><span>Open requests<strong id="countRequests">—</strong></span></article>
+                    </div>
+                    <div class="dashboard-section">
+                        <div class="section-heading"><div><h2>Your access</h2><p id="accessDescription">Your account scope and current permissions.</p></div></div>
+                        <div id="scopeSummary" class="scope-summary"></div>
+                    </div>
+                    <div class="dashboard-section">
+                        <div class="section-heading"><div><h2>Request ministry access</h2><p>Ask the parish administrator to assign you a ministry or Jumuiya.</p></div></div>
+                        <form id="moderatorForm" class="admin-form">
+                            <div class="form-row">
+                                <div class="form-group"><label for="requestScopeType">Area</label><select id="requestScopeType"><option value="ministry">Ministry</option><option value="jumuiya">Jumuiya</option></select></div>
+                                <div class="form-group"><label for="requestScopeName">Ministry or Jumuiya</label><input id="requestScopeName" required maxlength="120" placeholder="e.g. Choir or Jumuiya 1"></div>
+                            </div>
+                            <div class="form-group"><label for="requestReason">Why would you like to help?</label><textarea id="requestReason" rows="3" maxlength="1000"></textarea></div>
+                            <button class="admin-btn" type="submit">Send access request</button>
+                        </form>
+                        <div id="myRequests" class="request-list"></div>
+                    </div>
+                </section>
+
+                <section class="admin-panel" id="panel-schedules">
+                    <div class="dashboard-section">
+                        <div class="section-heading"><div><h2>Service times</h2><p>Manage Sunday worship, weekday Mass and Bible study schedules.</p></div></div>
+                        <div id="manager-schedules"></div>
+                    </div>
+                </section>
+                <section class="admin-panel" id="panel-projects"><div class="dashboard-section"><div class="section-heading"><div><h2>Parish development projects</h2><p>Share project goals and progress with the parish.</p></div></div><div id="manager-projects"></div></div></section>
+                <section class="admin-panel" id="panel-jumuiyas"><div class="dashboard-section"><div class="section-heading"><div><h2>Small Christian Communities</h2><p>Directory for the nine Jumuiyas and their leaders.</p></div></div><div id="manager-jumuiyas"></div></div></section>
+                <section class="admin-panel" id="panel-ministries"><div class="dashboard-section"><div class="section-heading"><div><h2>Ministries</h2><p>Ministry descriptions and moderator contacts.</p></div></div><div id="manager-ministries"></div></div></section>
+                <section class="admin-panel" id="panel-events"><div class="dashboard-section"><div class="section-heading"><div><h2>Parish events</h2><p>Publish upcoming celebrations and community events.</p></div></div><div id="manager-events"></div></div></section>
+
+                <section class="admin-panel" id="panel-requests">
+                    <div class="dashboard-section"><div class="section-heading"><div><h2>Moderator applications</h2><p>Review access requests. Removing an approved request revokes that assignment.</p></div></div><div id="moderatorRequests"></div></div>
+                    <div class="dashboard-section"><div class="section-heading"><div><h2>Sacramental & certificate requests</h2><p>Review private requests submitted by parishioners.</p></div></div><div id="sacramentalRequests"></div></div>
+                </section>
+                <section class="admin-panel" id="panel-giving">
+                    <div class="dashboard-section"><div class="section-heading"><div><h2>Giving history</h2><p>Members can see only their own contributions. Administrators can confirm received gifts.</p></div></div><div id="donationsList"></div></div>
+                </section>
+                <section class="admin-panel" id="panel-members" data-super-only>
+                    <div class="dashboard-section"><div class="section-heading"><div><h2>Members & access</h2><p>Manage account access. The Super Admin account is permanently protected.</p></div></div><div id="usersList"></div></div>
+                </section>
+                <section class="admin-panel" id="panel-settings">
+                    <div class="dashboard-section"><div class="section-heading"><div><h2>Parish settings</h2><p>Updates are reflected on the public website.</p></div></div>
+                        <form id="settingsForm" class="admin-form">
+                            <div class="form-group"><label for="announcementInput">Announcement banner</label><textarea id="announcementInput" rows="2" maxlength="500" placeholder="Share a parish announcement"></textarea></div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="paybillInput">M-Pesa Paybill</label><input id="paybillInput" maxlength="80"></div>
+                                <div class="form-group"><label for="tillInput">M-Pesa Till number</label><input id="tillInput" maxlength="80"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="accountNameInput">M-Pesa account name</label><input id="accountNameInput" maxlength="120"></div>
+                                <div class="form-group"><label for="bankNameInput">Bank name</label><input id="bankNameInput" maxlength="120"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="bankAccountNameInput">Bank account name</label><input id="bankAccountNameInput" maxlength="120"></div>
+                                <div class="form-group"><label for="bankAccountNumberInput">Bank account number</label><input id="bankAccountNumberInput" maxlength="80"></div>
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group"><label for="bankBranchInput">Bank branch</label><input id="bankBranchInput" maxlength="120"></div>
+                                <div class="form-group"><label for="addressInput">Parish address fallback</label><input id="addressInput" maxlength="250"></div>
+                            </div>
+                            <div class="form-group"><label for="mapInput">Google Maps link or embed URL</label><input id="mapInput" maxlength="1000" placeholder="Paste a Google Maps share link or iframe URL"></div>
+                            <div class="form-group"><label for="readingsInput">Manual daily readings override (optional)</label><textarea id="readingsInput" rows="5" placeholder="First Reading: …&#10;Psalm: …&#10;Second Reading: …&#10;Gospel: …"></textarea></div>
+                            <label class="checkbox-row"><input type="checkbox" id="showSchedulesInput"> Show service times on the homepage</label>
+                            <button type="submit" class="admin-btn">Save parish settings</button>
+                        </form>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+    <script src="../css/js/admin.js"></script>
+</body>
+</html>

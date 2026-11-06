@@ -1,0 +1,730 @@
+:root {
+    --burgundy: #6f1730;
+    --burgundy-dark: #4b0e20;
+    --cream: #fffaf0;
+    --gold: #c79a3b;
+    --white: #ffffff;
+    --text: #30251f;
+    --muted: #716861;
+    --border: #e6d9c5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--cream);
+    color: var(--text);
+}
+
+
+/* LOGIN PAGE */
+
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background:
+        linear-gradient(
+            135deg,
+            var(--burgundy-dark),
+            var(--burgundy)
+        );
+}
+
+
+.login-card {
+    width: 100%;
+    max-width: 430px;
+    background: var(--white);
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+    text-align: center;
+}
+
+
+.login-logo {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--burgundy);
+    color: var(--gold);
+
+    border-radius: 50%;
+
+    font-size: 32px;
+}
+
+
+.login-card h1 {
+    color: var(--burgundy);
+    margin-bottom: 8px;
+}
+
+
+.login-subtitle {
+    color: var(--muted);
+    margin-bottom: 30px;
+}
+
+
+.form-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+
+.form-group input {
+    width: 100%;
+    padding: 13px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    font-size: 16px;
+}
+
+
+.form-group input:focus {
+    outline: 2px solid var(--gold);
+    border-color: var(--gold);
+}
+
+
+.admin-btn {
+    width: 100%;
+    padding: 14px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: var(--burgundy);
+    color: var(--white);
+
+    font-size: 16px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+
+.admin-btn:hover {
+    background: var(--burgundy-dark);
+}
+
+
+#loginMessage {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+
+.back-link {
+    display: inline-block;
+    margin-top: 25px;
+
+    color: var(--burgundy);
+    text-decoration: none;
+}
+
+
+.back-link:hover {
+    color: var(--gold);
+}
+
+
+@media (max-width: 500px) {
+
+    .login-card {
+        padding: 30px 20px;
+    }
+
+}/* =========================
+   ADMIN DASHBOARD
+========================= */
+
+.admin-layout {
+    min-height: 100vh;
+    display: flex;
+    background: #f7f4ee;
+}
+
+
+/* SIDEBAR */
+
+.admin-sidebar {
+    width: 260px;
+    min-height: 100vh;
+    background: var(--burgundy-dark);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 1000;
+}
+
+
+.admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 25px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+}
+
+
+.admin-cross {
+    width: 42px;
+    height: 42px;
+    background: var(--gold);
+    color: var(--burgundy-dark);
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 22px;
+}
+
+
+.admin-brand strong,
+.admin-brand span {
+    display: block;
+}
+
+
+.admin-brand span {
+    font-size: 12px;
+    opacity: 0.7;
+    margin-top: 4px;
+}
+
+
+.admin-nav {
+    padding: 20px 12px;
+    flex: 1;
+}
+
+
+.admin-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    padding: 13px 14px;
+    margin-bottom: 5px;
+
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+
+    border-radius: 7px;
+}
+
+
+.admin-nav-link:hover,
+.admin-nav-link.active {
+    background: var(--burgundy);
+    color: var(--white);
+}
+
+
+.admin-nav-link span {
+    width: 24px;
+}
+
+
+.sidebar-bottom {
+    padding: 15px;
+    border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+
+.website-link,
+.logout-link {
+    display: block;
+    padding: 11px;
+    color: white;
+    text-decoration: none;
+    border-radius: 6px;
+    margin-bottom: 5px;
+}
+
+
+.website-link:hover,
+.logout-link:hover {
+    background: var(--burgundy);
+}
+
+
+/* MAIN */
+
+.admin-main {
+    margin-left: 260px;
+    width: calc(100% - 260px);
+}
+
+
+/* HEADER */
+
+.admin-header {
+    min-height: 90px;
+    padding: 20px 30px;
+
+    background: var(--white);
+    border-bottom: 1px solid var(--border);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+
+.admin-header h1 {
+    color: var(--burgundy);
+    margin-bottom: 5px;
+}
+
+
+.admin-header p {
+    color: var(--muted);
+}
+
+
+.admin-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.user-avatar {
+    width: 42px;
+    height: 42px;
+
+    border-radius: 50%;
+
+    background: var(--burgundy);
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-weight: bold;
+}
+
+
+.admin-user strong,
+.admin-user span {
+    display: block;
+}
+
+
+.admin-user span {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 3px;
+}
+
+
+/* CONTENT */
+
+.dashboard-content {
+    padding: 30px;
+}
+
+
+.dashboard-cards {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+
+.dashboard-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 20px;
+
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: var(--cream);
+    border-radius: 10px;
+
+    font-size: 23px;
+}
+
+
+.dashboard-card span,
+.dashboard-card strong {
+    display: block;
+}
+
+
+.dashboard-card span {
+    color: var(--muted);
+    font-size: 13px;
+    margin-bottom: 6px;
+}
+
+
+.dashboard-card strong {
+    color: var(--burgundy);
+    font-size: 25px;
+}
+
+
+/* DASHBOARD SECTIONS */
+
+.dashboard-section {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+
+    padding: 25px;
+    margin-top: 25px;
+}
+
+
+.section-heading h2 {
+    color: var(--burgundy);
+    margin-bottom: 5px;
+}
+
+
+.section-heading p {
+    color: var(--muted);
+}
+
+
+/* QUICK ACTIONS */
+
+.quick-actions {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+}
+
+
+.quick-action {
+    text-align: left;
+
+    padding: 20px;
+
+    border: 1px solid var(--border);
+    background: var(--cream);
+
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+
+.quick-action:hover {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+}
+
+
+.quick-action span {
+    display: block;
+    font-size: 28px;
+    margin-bottom: 12px;
+}
+
+
+.quick-action strong,
+.quick-action small {
+    display: block;
+}
+
+
+.quick-action strong {
+    color: var(--burgundy);
+    margin-bottom: 5px;
+}
+
+
+.quick-action small {
+    color: var(--muted);
+}
+
+
+/* EMPTY STATE */
+
+.empty-state {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--muted);
+}
+
+
+.empty-state div {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+
+.empty-state h3 {
+    color: var(--burgundy);
+    margin-bottom: 8px;
+}
+
+
+/* MOBILE BUTTON */
+
+.sidebar-toggle {
+    display: none;
+
+    border: none;
+    background: var(--burgundy);
+    color: white;
+
+    padding: 10px 13px;
+    border-radius: 6px;
+
+    font-size: 18px;
+    cursor: pointer;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 1100px) {
+
+    .dashboard-cards,
+    .quick-actions {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+@media (max-width: 800px) {
+
+    .admin-sidebar {
+        transform: translateX(-100%);
+        transition: 0.3s;
+    }
+
+
+    .admin-sidebar.open {
+        transform: translateX(0);
+    }
+
+
+    .admin-main {
+        margin-left: 0;
+        width: 100%;
+    }
+
+
+    .sidebar-toggle {
+        display: block;
+    }
+
+
+    .admin-header {
+        padding: 15px 20px;
+    }
+
+
+    .admin-user {
+        display: none;
+    }
+
+
+    .dashboard-content {
+        padding: 20px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .dashboard-cards,
+    .quick-actions {
+        grid-template-columns: 1fr;
+    }
+
+
+    .admin-header {
+        align-items: flex-start;
+    }
+
+}/* =========================
+   ADMIN FORMS
+========================= */
+
+.admin-form {
+    margin-top: 25px;
+    padding: 25px;
+
+    background: var(--cream);
+
+    border: 1px solid var(--border);
+    border-radius: 10px;
+}
+
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+
+.admin-form .form-group {
+    margin-bottom: 18px;
+}
+
+
+.admin-form input,
+.admin-form select {
+    width: 100%;
+
+    padding: 12px;
+
+    border: 1px solid var(--border);
+    border-radius: 7px;
+
+    background: white;
+
+    font-size: 15px;
+}
+
+
+.admin-form input:focus,
+.admin-form select:focus {
+    outline: 2px solid var(--gold);
+}
+
+
+.admin-form .admin-btn {
+    width: auto;
+    padding: 12px 20px;
+}
+
+
+#massMessage {
+    margin-top: 15px;
+    font-weight: 600;
+}
+
+
+/* =========================
+   ADMIN TABLE
+========================= */
+
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+
+.table-container h3 {
+    color: var(--burgundy);
+    margin-bottom: 15px;
+}
+
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+
+.admin-table th,
+.admin-table td {
+    padding: 14px;
+
+    text-align: left;
+
+    border-bottom: 1px solid var(--border);
+}
+
+
+.admin-table th {
+    background: var(--burgundy);
+    color: white;
+}
+
+
+.admin-table tr:hover {
+    background: var(--cream);
+}
+
+
+.delete-btn {
+    border: none;
+
+    background: #a83232;
+    color: white;
+
+    padding: 7px 12px;
+
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+
+.delete-btn:hover {
+    opacity: 0.85;
+}
+
+
+.empty-table {
+    text-align: center !important;
+    color: var(--muted);
+}
+
+
+@media (max-width: 600px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+
+}

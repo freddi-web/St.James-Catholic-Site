@@ -1,0 +1,5 @@
+.vercel
+.env*
+backend/parish.db
+backend/__pycache__/
+__pycache__/
