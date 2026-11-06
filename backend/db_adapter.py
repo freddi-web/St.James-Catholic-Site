@@ -3,10 +3,17 @@ import os
 import sqlite3
 from contextlib import contextmanager
 from pathlib import Path
+from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 
 DATABASE_PATH = Path(__file__).parent / "parish.db"
 DATABASE_URL = os.environ.get("STJAMES_POSTGRES_URL") or os.environ.get("DATABASE_URL")
+
+
+def postgres_connection_url(value):
+    parts = urlsplit(value)
+    query = [(key, item) for key, item in parse_qsl(parts.query) if key != "supa"]
+    return urlunsplit(parts._replace(query=urlencode(query)))
 
 
 class DatabaseConnection:
@@ -21,7 +28,7 @@ class DatabaseConnection:
         )
 
     def executemany(self, query, parameters):
-        return self.connection.executemany(
+        return self.connection.cursor().executemany(
             query.replace("?", "%s") if self.postgres else query,
             parameters,
         )
@@ -42,7 +49,10 @@ def get_connection():
         from psycopg.rows import dict_row
 
         connection = psycopg.connect(
-            DATABASE_URL, row_factory=dict_row, connect_timeout=10, sslmode="require"
+            postgres_connection_url(DATABASE_URL),
+            row_factory=dict_row,
+            connect_timeout=10,
+            sslmode="require",
         )
         wrapped = DatabaseConnection(connection, postgres=True)
     else:
