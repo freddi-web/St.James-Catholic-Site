@@ -976,3 +976,95 @@ img {
     }
 
 }
+
+@keyframes parish-arrive {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.page-hero {
+    background: linear-gradient(115deg, var(--burgundy-dark), var(--burgundy) 68%, var(--cobalt));
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.28);
+    box-shadow: 0 18px 55px rgba(8, 39, 58, 0.2), inset 0 1px rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(12px);
+}
+
+:focus-visible {
+    outline: 3px solid var(--gold);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .hero-content > * {
+        animation: parish-arrive 700ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .hero-content > :nth-child(2) {
+        animation-delay: 120ms;
+    }
+
+    .page-hero > * {
+        animation: parish-arrive 600ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+
+    .nav-menu a,
+    .btn,
+    .info-card,
+    .ministry-card,
+    .contact-card,
+    .schedule-card,
+    .reading-card,
+    .payment-card {
+        transition:
+            transform 220ms ease,
+            box-shadow 220ms ease,
+            border-color 220ms ease,
+            color 220ms ease,
+            background-color 220ms ease;
+    }
+
+    .info-card:hover,
+    .ministry-card:hover,
+    .contact-card:hover,
+    .schedule-card:hover,
+    .reading-card:hover,
+    .payment-card:hover {
+        transform: translateY(-4px);
+        border-color: rgba(42, 127, 184, 0.42);
+        box-shadow: 0 14px 32px rgba(21, 82, 116, 0.1);
+    }
+
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+body.reduce-motion .hero-content > *,
+body.reduce-motion .page-hero > * {
+    animation: none !important;
+}
